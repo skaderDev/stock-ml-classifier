@@ -41,19 +41,31 @@ _What should I dig into or clarify next session?_
 `YYYY-MM-DD — X minutes/hours`
 
 ### 🧠 **Main Learning Outcome for Today**
-_What did I *intend* to understand or practice today?_
+Understand how to build and visualize past-looking return features (1-day, 5-day, 10-day, momentum) and interpret them in the context of predicting next-day SPY moves.
 
 ### ⚙️ **What I Did**
-_Bullet list of activities, e.g., read docs, wrote code, debugged, researched_
+- Implemented columns for 5-day, 10-day and momentum
+- Made sure to correctly include the Date column in the processed data
+- Made line plot and histogram of 1 day returns
+- Plotted and visualized multi-day returns on one plot
+- Made a box plot of returns split by y (growth), which indicated tomorrow's up vs down
 
 ### 🔍 **What I Learned / Realized**
-_Even small realizations count — write them down. Be honest._
+- How to better visualize data using mat plot lib
+- The differences in the quality of data between 1 day, 5 day, and 10 day returns
+- Boxplots hinted at weak signals, which are tiny differences between up vs down days. This matches the idea that markets are efficient.
+- return_1d (future return) is the label, while ret_1d, ret_5d, etc. are features. Keeping that distinction is crucial.
 
 ### ❓ **What Confused Me**
-_Things that didn’t fully click yet or I felt shaky on_
+- Handling indices in raw csv's can be tricky if not formatted properly beforehand
+- Still a little fuzzy on when to use .pct_change() vs .shift() for returns.
+- Interpreting boxplots: overlap was large, so I wasn’t sure how much signal really exists.
 
 ### 📌 **Next Questions to Explore**
-_What should I dig into or clarify next session?_
+- How strong are moving average signals compared to returns (Session 4)?
+- Do price-to-SMA ratios show clearer mean-reversion tendencies?
+- Should I standardize/scale features now or wait until model training?
+- How to decide which features are redundant (e.g., ret_5d vs mom_5d).
 
 ---
 ### 📅 **Date & Session Duration**
