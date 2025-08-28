@@ -35,10 +35,44 @@ _What should I dig into or clarify next session?_
 ### 🤯 Things that surprised me / I struggled with:
 
 ### 🔄 Adjustments for next week (process or learning approach):
+---
+### 📅 **Date & Session Duration**
+`2025-08-27 — ~2 hours`
+
+### 🧠 **Main Learning Outcome for Today**
+Understand how to take the engineered SMA ratio features and train baseline models (Logistic Regression, Random Forest) using a proper time-based split to avoid leakage.  
+
+### ⚙️ **What I Did**
+- Loaded Session 4 dataset (`spy_features_step4.csv`) and validated required columns (`Date`, `y`, SMA ratios).  
+- Cleaned data: sorted chronologically, dropped NaNs.  
+- Split data into training (before 2021-01-01) and testing (after) sets.  
+- Built a **Pipeline** with StandardScaler + Logistic Regression.  
+- Trained Logistic Regression and evaluated on test set (accuracy, precision, recall, f1, ROC-AUC, confusion matrix).  
+- Trained Random Forest as a non-linear baseline and compared side-by-side with Logistic Regression.  
+- Generated ROC curves and inspected Random Forest feature importances.  
+- Saved metrics/models as artifacts for reproducibility.  
+
+### 🔍 **What I Learned / Realized**
+- **Pipelines** connect preprocessing + model training into one flow, which avoids leakage and makes evaluation consistent.  
+- **Time-based splitting** is critical in finance — random shuffling would leak “future” info into the training.  
+- Logistic Regression provides a linear, interpretable baseline; Random Forest captures non-linear patterns.  
+- Metrics tell different stories: accuracy can look okay even if precision/recall are weak. ROC-AUC is a better way to see probability quality.  
+
+### ❓ **What Confused Me**
+- I still feel shaky on **what the model is *really doing*** (especially Random Forest vs Logistic Regression).  
+- Why scaling matters for some models but not others.  
+- How to interpret confusion matrices and trade-offs (e.g., why precision goes down if recall goes up).  
+- I don’t fully grasp what “probability calibration” or threshold tuning would mean in practice yet.  
+
+### 📌 **Next Questions to Explore**
+- Try **TimeSeriesSplit cross-validation** to see if results hold across multiple periods, not just one split date.  
+- Learn how to **tune thresholds** (instead of default 0.5 cutoff) to optimize for precision or recall.  
+- Add new features (RSI, volatility, volume) and see if they improve ROC-AUC.  
+- Explore a very simple **backtest**: “If I went long when model predicts up, what would returns look like?”  
 
 ---
 ### 📅 **Date & Session Duration**
-`YYYY-MM-DD — X minutes/hours`
+`2025-08-26 — 1 hour`
 
 ### 🧠 **Main Learning Outcome for Today**
 Understand how to build and visualize past-looking return features (1-day, 5-day, 10-day, momentum) and interpret them in the context of predicting next-day SPY moves.
